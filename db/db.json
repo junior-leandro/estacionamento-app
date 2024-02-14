@@ -1,0 +1,13 @@
+{
+    "status": [
+        {
+            "id" : 1,
+            "tipo": "Solicitado"
+        },
+        {
+            "id" : 2,
+            "tipo": "Finalizado"
+        }
+    ],
+    "carros": []
+}
