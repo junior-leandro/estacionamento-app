@@ -1,13 +1,30 @@
 {
-    "status": [
-        {
-            "id" : 1,
-            "tipo": "Solicitado"
-        },
-        {
-            "id" : 2,
-            "tipo": "Finalizado"
-        }
-    ],
-    "carros": []
+  "status": [
+    {
+      "id": "1",
+      "tipo": "Solicitado"
+    },
+    {
+      "id": "2",
+      "tipo": "Finalizado"
+    }
+  ],
+  "carros": [
+    {
+      "id": "f2b4",
+      "nome": "Junior",
+      "veiculo": "Vectra",
+      "placa": "ABC-1234",
+      "hora": "11:00",
+      "status": "Solicitado"
+    },
+    {
+      "id": "8ae5",
+      "nome": "JUNIOR OLIVEIRA LEANDRO",
+      "veiculo": "Goleta",
+      "placa": "HBV-2024",
+      "hora": "11:10",
+      "status": "Solicitado"
+    }
+  ]
 }

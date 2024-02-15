@@ -1,6 +1,7 @@
 <template>
-    <p>SISTEMA DE ESTACIONAMENTO COM VUE.JS - 2024</p>
-
+    <footer id="footer">
+    <p>SISTEMA DE ESTACIONAMENTO COM VUE.JS &copy; - 2024</p>
+</footer>
 
 </template>
 
@@ -16,5 +17,14 @@ export default {
 
 
 <style scoped>
-
+#footer{
+    height: 80px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+}
 </style>

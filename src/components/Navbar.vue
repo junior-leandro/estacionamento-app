@@ -19,7 +19,7 @@ export default{
 
 </script>
 
-<style scoped>
+<style scoped> /* O Style com 'scoped' altera somente o componente em que está */
 
 #nav{
     background-color: #141414;

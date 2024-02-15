@@ -1,4 +1,6 @@
 <template>
-  <h1>Exibir veiculos Cadastrados</h1>
+  <div class="main-container">
+    <h1>Exibir Veiculos Cadastrados</h1>
+  </div>
 </template>
 
