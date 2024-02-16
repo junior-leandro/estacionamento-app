@@ -1,5 +1,7 @@
 <template>
     <div>
+
+        <Mensagem :msg="msg" v-show="msg"/>
         <form id="carro-form" @submit="createCarro">
 
             <div class="input-container">
@@ -30,6 +32,8 @@
 
 
 <script>
+
+import Mensagem from './Mensagem.vue';
 
 export default {
     name: "CarroForm",
@@ -71,6 +75,12 @@ export default {
 
             console.log(res)
 
+            //Mensagem de sucesso
+            this.msg = `${this.veiculo} de ${this.nome} cadastrado com sucesso`;
+
+            // Limpar a mensagem
+            setTimeout(() => this.msg = "", 3000);
+
             // Limpar formulário
 
             this.nome = "";
@@ -78,6 +88,9 @@ export default {
             this.placa = "";
             this.hora = "";
         }
+    },
+    components: {
+        Mensagem,
     }
 }
 
