@@ -3,10 +3,10 @@
         <div>
             <div id="carro-table-heading">
 
-                <div class="order-id">#:</div>
-                <div>Nome da Pessoa: </div>
-                <div>Nome da Carro: </div>
-                <div>Placa do Carro: </div>
+                <div class="order-id">ID</div>
+                <div>Proprietário </div>
+                <div>Modelo do Veiculo: </div>
+                <div>Placa do Veiculo: </div>
                 <div>Horario de Entrada: </div>
                 <div>Ações: </div>
 
@@ -15,22 +15,23 @@
         </div>
         <div id="carro-table-rows">
 
-            <div class="carro-table-row">
+            <div class="carro-table-row" v-for="carro in carros" :key="carro.id">
 
 
-                <div class="order-number"> 01</div>
-                <div> Junior </div>
-                <div> Ford Ka </div>
-                <div> GCT-2400 </div>
-                <div> 12:00 </div>
+                <div class="order-number"> {{ carro.id }}</div>
+                <div> {{ carro.nome }} </div>
+                <div> {{ carro.veiculo }} </div>
+                <div> {{ carro.placa }} </div>
+                <div> {{ carro.hora }} </div>
 
                 <div>
 
                     <select name="status" class="status">
                         <option value="">Status Carro </option>
+                        <option value="" v-for="s in status" :key="s.tipo">{{ s.tipo }} </option>
                     </select>
 
-                    <button class="delete-btn"> Deletar</button>
+                    <button class="delete-btn" @click="deletarVeiculo(carro.id)">Deletar</button>
 
 
                 </div>
@@ -43,13 +44,57 @@
 
 <script>
 export default {
-    name: "Dashboard"
+    name: "Dashboard",
+
+    data() {
+        return {
+            carros: null,
+            carros_id: null,
+            status: []
+
+        }
+    },
+    // Carregar os veiculos
+
+    methods: {
+        async getCadastros() {
+
+            const req = await fetch("http://localhost:3000/carros");
+            const data = await req.json();
+
+            this.carros = data;
+
+            this.getStatus();
+        },
+
+        async getStatus() {
+
+            const req = await fetch("http://localhost:3000/status");
+            const data = await req.json();
+
+            this.status = data;
+        },
+
+        async deletarVeiculo(id) {
+            const req = await fetch(`http://localhost:3000/carros/${id}`, {
+
+                method: "DELETE"
+            });
+
+            const data = await req.json();
+            this.getCadastros();
+
+        }
+
+    },
+    mounted() {
+        this.getCadastros();
+    }
 }
 </script>
 
 <style scoped>
-
-#carro-table{
+#carro-table {
     max-width: 1200px;
     margin: 0 auto;
 
@@ -57,19 +102,20 @@ export default {
 
 #carro-table-heading,
 #carro-table-rows,
-.carro-table-row{
+.carro-table-row {
     display: flex;
     flex-wrap: wrap;
 
 }
-#carro-table-heading{
+
+#carro-table-heading {
     font-weight: 700;
     padding: 12px;
-    border-bottom: 3px solid rgba(53,30,180);
+    border-bottom: 3px solid rgba(53, 30, 180);
 }
 
 #carro-table-heading div,
-.carro-table-row div{
+.carro-table-row div {
     width: 19%;
 }
 
@@ -77,14 +123,15 @@ export default {
 .carro-table-row {
     width: 100%;
     padding: 12px;
-    border-bottom: 1px solid rgba(53,30,180);
+    border-bottom: 1px solid rgba(53, 30, 180);
 }
 
 #carro-table-heading .order-id,
-.carro-table-row .order-number{
+.carro-table-row .order-number {
     width: 5%;
 }
-select{
+
+select {
     padding: 10px 6px;
     margin-right: 12px;
 }

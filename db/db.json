@@ -9,14 +9,5 @@
       "tipo": "Finalizado"
     }
   ],
-  "carros": [
-    {
-      "id": "b6b1",
-      "nome": "Junior",
-      "veiculo": "Vectra",
-      "placa": "BZB-0123",
-      "hora": "11:16",
-      "status": "Solicitado"
-    }
-  ]
+  "carros": []
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <Mensagem :msg="msg" v-show="msg"/>
+        <Mensagem :msg="msg" v-show="msg" />
         <form id="carro-form" @submit="createCarro">
 
             <div class="input-container">
@@ -67,7 +67,7 @@ export default {
 
             const req = await fetch("http://localhost:3000/carros", {
                 method: "POST",
-                headers: {"Content-Type" : "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: dataJson
             });
 
