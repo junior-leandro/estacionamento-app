@@ -2,6 +2,8 @@
     <div>
 
         <Mensagem :msg="msg" v-show="msg" />
+
+
         <form id="carro-form" @submit="createCarro">
 
             <div class="input-container">
@@ -57,7 +59,7 @@ export default {
                 veiculo: this.veiculo,
                 placa: this.placa,
                 hora: this.hora,
-                status: "Solicitado",
+                status: "Ativo",
 
             }
             // console.log(data)

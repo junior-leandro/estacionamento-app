@@ -1,5 +1,9 @@
 <template>
     <div id="carro-table">
+
+        <Mensagem :msg="msg" v-show="msg" />
+
+
         <div>
             <div id="carro-table-heading">
 
@@ -26,9 +30,9 @@
 
                 <div>
 
-                    <select name="status" class="status">
-                        <option value="">Status Carro </option>
-                        <option value="" v-for="s in status" :key="s.tipo">{{ s.tipo }} </option>
+                    <select name="status" class="status" @change="updateCarro($event, carro.id)">
+                        <option :value="s.tipo" v-for="s in status" :key="s.tipo" :selected="carro.status == s.tipo">{{
+                            s.tipo }} </option>
                     </select>
 
                     <button class="delete-btn" @click="deletarVeiculo(carro.id)">Deletar</button>
@@ -43,6 +47,9 @@
 </template>
 
 <script>
+
+import Mensagem from './Mensagem.vue';
+
 export default {
     name: "Dashboard",
 
@@ -50,11 +57,17 @@ export default {
         return {
             carros: null,
             carros_id: null,
-            status: []
+            status: [],
+            msg: null,
 
         }
     },
     // Carregar os veiculos
+
+    components: {
+        Mensagem
+
+    },
 
     methods: {
         async getCadastros() {
@@ -82,7 +95,35 @@ export default {
             });
 
             const data = await req.json();
+
+            //Mensagem de sucesso
+            this.msg = `Veiculo deletado com sucesso`;
+
+            // Limpar a mensagem
+            setTimeout(() => this.msg = "", 3000);
             this.getCadastros();
+
+        },
+
+        async updateCarro(event, id) {
+            const opcoes = event.target.value;
+            const dataJson = JSON.stringify({ status: opcoes });
+
+            const req = await fetch(`http://localhost:3000/carros/${id}`, {
+
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: dataJson
+            });
+
+            const res = await req.json();
+
+            //Mensagem de sucesso
+            this.msg = `Veiculo alterado para ${res.status} sucesso!`;
+
+            // Limpar a mensagem
+            setTimeout(() => this.msg = "", 3000);
+
 
         }
 

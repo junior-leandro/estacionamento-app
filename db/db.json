@@ -2,12 +2,61 @@
   "status": [
     {
       "id": "1",
-      "tipo": "Solicitado"
+      "tipo": "Ativo"
     },
     {
       "id": "2",
       "tipo": "Finalizado"
     }
   ],
-  "carros": []
+  "carros": [
+    {
+      "id": "d9ab",
+      "nome": "Erica",
+      "veiculo": "Ford Ka",
+      "placa": "GCT-2400",
+      "hora": "14:00",
+      "status": "Ativo"
+    },
+    {
+      "id": "de17",
+      "nome": "Juliardo",
+      "veiculo": "Fusca",
+      "placa": "BCA-0009",
+      "hora": "14:26",
+      "status": "Ativo"
+    },
+    {
+      "id": "f674",
+      "nome": "Neylon Junior ",
+      "veiculo": "Gol",
+      "placa": "GAY-1124",
+      "hora": "14:28",
+      "status": "Ativo"
+    },
+    {
+      "id": "c692",
+      "nome": "Andre",
+      "veiculo": "Citroen C3",
+      "placa": "BZB-0123",
+      "hora": "14:30",
+      "status": "Ativo"
+    },
+    {
+      "id": "35f3",
+      "nome": "Jose Leandro",
+      "veiculo": "Fiat Strada",
+      "placa": "HBV-2024",
+      "hora": "13:30",
+      "status": "Ativo"
+    },
+    {
+      "id": "112f",
+      "nome": "Junior",
+      "veiculo": "Vectra",
+      "placa": "BGA8F98",
+      "hora": "14:38",
+      "status": "Ativo"
+    }
+  ]
 }
