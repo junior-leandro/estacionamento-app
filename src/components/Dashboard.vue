@@ -6,12 +6,12 @@
 
         <div>
             <div id="carro-table-heading">
-
-                <div class="order-id">ID</div>
+                n
                 <div>Proprietário </div>
                 <div>Modelo do Veiculo: </div>
                 <div>Placa do Veiculo: </div>
                 <div>Horario de Entrada: </div>
+                <div>Valor:</div>
                 <div>Ações: </div>
 
             </div>
@@ -22,12 +22,12 @@
             <div class="carro-table-row" v-for="carro in carros" :key="carro.id">
 
 
-                <div class="order-number"> {{ carro.id }}</div>
                 <div> {{ carro.nome }} </div>
                 <div> {{ carro.veiculo }} </div>
                 <div> {{ carro.placa }} </div>
                 <div> {{ carro.hora }} </div>
 
+                <div>R$10,80</div>
                 <div>
 
                     <select name="status" class="status" @change="updateCarro($event, carro.id)">
@@ -77,6 +77,20 @@ export default {
 
             this.carros = data;
 
+            /* CALCULAR PREÇO 
+
+            let horaEntrada = data.hora; // hora da entrada
+            let horaAtual = new Date(); // hora atual
+            let tempoPermanencia = 1; // tempo de permanencia minima
+            let valorHora = 2.5; // valor da hora  do estacionamento
+
+            for (let e = 0; e <= 5; e++) {
+                // Executa 5 vezes, com os valores de passos de 0 a 4.
+                console.log("Ande um passo para o leste");
+            }
+
+            */
+
             this.getStatus();
         },
 
@@ -86,7 +100,10 @@ export default {
             const data = await req.json();
 
             this.status = data;
+
+
         },
+
 
         async deletarVeiculo(id) {
             const req = await fetch(`http://localhost:3000/carros/${id}`, {
@@ -136,7 +153,7 @@ export default {
 
 <style scoped>
 #carro-table {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
 
 }
@@ -157,7 +174,7 @@ export default {
 
 #carro-table-heading div,
 .carro-table-row div {
-    width: 19%;
+    width: 16%;
 }
 
 
@@ -167,10 +184,7 @@ export default {
     border-bottom: 1px solid rgba(53, 30, 180);
 }
 
-#carro-table-heading .order-id,
-.carro-table-row .order-number {
-    width: 5%;
-}
+
 
 select {
     padding: 10px 6px;
